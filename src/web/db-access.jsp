@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="org.jivesoftware.database.DbConnectionManager" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="org.jivesoftware.util.StringUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
