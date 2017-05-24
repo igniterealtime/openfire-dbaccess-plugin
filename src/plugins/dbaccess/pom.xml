@@ -11,7 +11,7 @@
     <name>DB Access Plugin</name>
 
     <build>
-        <sourceDirectory>../../src/plugins/dbaccess/src/java</sourceDirectory>
+        <sourceDirectory>src/java</sourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
