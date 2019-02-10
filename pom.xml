@@ -4,13 +4,34 @@
     <parent>
         <artifactId>plugins</artifactId>
         <groupId>org.igniterealtime.openfire</groupId>
-        <version>4.3.0-beta</version>
+        <version>4.3.0</version>
     </parent>
     <groupId>org.igniterealtime.openfire.plugins</groupId>
     <artifactId>dbaccess</artifactId>
     <version>1.2.2-SNAPSHOT</version>
     <name>DB Access Plugin</name>
     <description>Provides administrators with a simple direct access interface to their Openfire DB.</description>
+
+    <repositories>
+        <!-- Where dependencies are obtained (such as the parent project). -->
+        <repository>
+            <id>igniterealtime</id>
+            <name>Ignite Realtime Repository</name>
+            <url>https://igniterealtime.org/archiva/repository/maven/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <!-- Typically used to retrieve Maven plugins that are used by this project.
+             This apparently is also used to botain the dependencies _used by_ these
+             plugins (such as the openfire-plugin-assembly-descriptor, needed to
+             package the project as an Openfire plugin!) -->
+        <pluginRepository>
+            <id>igniterealtime</id>
+            <name>Ignite Realtime Repository</name>
+            <url>https://igniterealtime.org/archiva/repository/maven/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <developers>
         <developer>
