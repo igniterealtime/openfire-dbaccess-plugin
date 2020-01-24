@@ -2,6 +2,8 @@
 <%@ page import="org.jivesoftware.database.DbConnectionManager" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="org.jivesoftware.util.StringUtils" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
@@ -38,6 +40,7 @@
     <div style="width: 100%; height: 200px; border: 1.0px solid #000000; overflow: scroll" id="output">
 <%
     // Handle an execution
+    final List<Integer> bigDataTypes = Arrays.asList(Types.BLOB, Types.LONGVARBINARY);
     if (execute) {
         Connection con = null;
         Statement stmt = null;
@@ -70,7 +73,12 @@
                     out.print("<tr>");
                     for (int i=1; i<=count; i++) {
                         out.print("<td>");
-                        out.print(StringUtils.escapeHTMLTags(rs.getString(i)));
+                        if ( bigDataTypes.contains( md.getColumnType(i) )) {
+                            final Object value = rs.getObject(i);
+                            out.print(StringUtils.escapeHTMLTags(value != null ? value.toString() : ""));
+                        } else {
+                            out.print(StringUtils.escapeHTMLTags(rs.getString(i)));
+                        }
                     }
                     out.println("</tr>");
                 }
