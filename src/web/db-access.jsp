@@ -37,7 +37,7 @@
 
 <div>
     <h3>SQL Output:</h3>
-    <div style="width: 100%; height: 200px; border: 1.0px solid #000000; overflow: scroll" id="output">
+    <div style="width: 100%; min-height: 200px; border: 1.0px solid #000000" id="output">
 <%
     // Handle an execution
     final List<Integer> bigDataTypes = Arrays.asList(Types.BLOB, Types.LONGVARBINARY);
