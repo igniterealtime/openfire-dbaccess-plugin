@@ -4,13 +4,25 @@
 <%@ page import="org.jivesoftware.util.StringUtils" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="java.util.Queue" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%!
+    static final Queue<String> PREVIOUS_QUERIES = new LinkedList<>();
+%>
 <%
     // Get parameters
     boolean execute = request.getParameter("execute") != null;
     String sql = request.getParameter("sql");
+
+    if (sql != null && !PREVIOUS_QUERIES.contains(sql)) {
+        PREVIOUS_QUERIES.add(sql);
+
+        while (PREVIOUS_QUERIES.size() > 5) {
+            PREVIOUS_QUERIES.remove();
+        }
+    }
 %>
 
 <html>
@@ -22,14 +34,21 @@
 
 <div class="information">
     Do <b>NOT</b> use this to edit your database unless you know what you are doing.  Openfire will not necessarily
-    handle changes to it's database out from under it while it is running.  Most likely you were asked to try a
+    handle changes to its database out from under it while it is running.  Most likely you were asked to try a
     couple of commands by whoever recommended this plugin, so please try to stick to that (or read-only activities).
 </div>
 
 <div>
     <h3>SQL Statement:</h3>
     <form action="db-access.jsp" method="post">
-        <textarea rows="10" cols="80" name="sql"><%= sql != null ? sql : "" %></textarea>
+        <div style="display: grid; grid-template-columns: 1fr 1fr;">
+            <div><textarea rows="10" cols="80" id="sql" name="sql"><%= sql != null ? sql : "" %></textarea></div>
+            <div>
+                <% for (final String previousQuery : PREVIOUS_QUERIES) { %>
+                <p style="font-family: monospace;"><a href="#" onclick="document.getElementById('sql').value = this.text"><%=previousQuery%></a></p>
+                <% } %>
+            </div>
+        </div>
         <br />
         <input type="submit" name="execute" value="Execute SQL"/>
     </form>
