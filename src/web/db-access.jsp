@@ -27,15 +27,13 @@
 
 <html>
     <head>
-        <title>DB Access Tool</title>
+        <title><fmt:message key="dbaccess.title"/></title>
         <meta name="pageID" content="db-access"/>
     </head>
     <body>
 
 <div class="information">
-    Do <b>NOT</b> use this to edit your database unless you know what you are doing.  Openfire will not necessarily
-    handle changes to its database out from under it while it is running.  Most likely you were asked to try a
-    couple of commands by whoever recommended this plugin, so please try to stick to that (or read-only activities).
+    <fmt:message key="dbaccess.caution.avoid.update"/>
 </div>
 
 <div>
@@ -50,7 +48,7 @@
             </div>
         </div>
         <br />
-        <input type="submit" name="execute" value="Execute SQL"/>
+        <input type="submit" name="execute" value="<fmt:message key="dbaccess.execute"/>"/>
     </form>
 </div>
 
