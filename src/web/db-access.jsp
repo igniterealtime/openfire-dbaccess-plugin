@@ -42,7 +42,7 @@
     <h3>SQL Statement:</h3>
     <form action="db-access.jsp" method="post">
         <div style="display: grid; grid-template-columns: 1fr 1fr;">
-            <div><textarea rows="10" cols="80" id="sql" name="sql"><%= sql != null ? sql : "" %></textarea></div>
+            <div><textarea rows="10" cols="80" id="sql" name="sql" style="font-family: monospace;"><%= sql != null ? sql : "" %></textarea></div>
             <div>
                 <% for (final String previousQuery : PREVIOUS_QUERIES) { %>
                 <p style="font-family: monospace;"><a href="#" onclick="document.getElementById('sql').value = this.text"><%=previousQuery%></a></p>
