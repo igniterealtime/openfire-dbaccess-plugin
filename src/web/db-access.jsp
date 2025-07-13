@@ -34,6 +34,8 @@
 
 <div class="information">
     <fmt:message key="dbaccess.caution.avoid.update"/>
+    <br/>
+    <a href="https://download.igniterealtime.org/openfire/docs/latest/documentation/database-guide.html"><fmt:message key="dbaccess.doc.db.schema"/></a>
 </div>
 
 <div>
