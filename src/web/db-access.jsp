@@ -27,22 +27,22 @@
 
 <html>
     <head>
-        <title>DB Access Tool</title>
+        <title><fmt:message key="dbaccess.title"/></title>
         <meta name="pageID" content="db-access"/>
     </head>
     <body>
 
 <div class="information">
-    Do <b>NOT</b> use this to edit your database unless you know what you are doing.  Openfire will not necessarily
-    handle changes to its database out from under it while it is running.  Most likely you were asked to try a
-    couple of commands by whoever recommended this plugin, so please try to stick to that (or read-only activities).
+    <fmt:message key="dbaccess.caution.avoid.update"/>
+    <br/>
+    <a href="https://download.igniterealtime.org/openfire/docs/latest/documentation/database-guide.html"><fmt:message key="dbaccess.doc.db.schema"/></a>
 </div>
 
 <div>
     <h3>SQL Statement:</h3>
     <form action="db-access.jsp" method="post">
         <div style="display: grid; grid-template-columns: 1fr 1fr;">
-            <div><textarea rows="10" cols="80" id="sql" name="sql"><%= sql != null ? sql : "" %></textarea></div>
+            <div><textarea rows="10" cols="80" id="sql" name="sql" style="font-family: monospace;"><%= sql != null ? sql : "" %></textarea></div>
             <div>
                 <% for (final String previousQuery : PREVIOUS_QUERIES) { %>
                 <p style="font-family: monospace;"><a href="#" onclick="document.getElementById('sql').value = this.text"><%=previousQuery%></a></p>
@@ -50,7 +50,7 @@
             </div>
         </div>
         <br />
-        <input type="submit" name="execute" value="Execute SQL"/>
+        <input type="submit" name="execute" value="<fmt:message key="dbaccess.execute"/>"/>
     </form>
 </div>
 
